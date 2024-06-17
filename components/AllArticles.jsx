@@ -1,7 +1,7 @@
 import styles from "../styles/mystyles.module.css"
 import { useEffect, useState } from "react";
 import ArticleCard from "./ArticleCard";
-import { fetchArticles } from "./api";
+import { fetchArticles } from "../api";
 
 const AllArticles = ()=>{
     const [articles, setArticles] = useState([]);
