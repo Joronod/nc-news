@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "../styles/mystyles.module.css"
 
 const ArticleCard = ({ article })=>{
+      
     return(
         <section className={styles.articleOverview}>
             <li >

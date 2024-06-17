@@ -25,7 +25,6 @@ const AllArticles = ()=>{
                 <h2>All articles</h2>
                 <ul className={styles.articleCard} >
                     {articles.map((article)=>{
-                        console.log(article)
                         return <ArticleCard key={article.article_id} article={article} />
                     })}
                 </ul>
