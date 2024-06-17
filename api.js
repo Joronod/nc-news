@@ -24,7 +24,7 @@ export const fetchComments = (articleId) =>{
     return ncNewsApi
         .get(`/articles/${articleId}/comments`)
         .then((response)=>{
-            return response.data.commments
+            return response.data.comments
         })
 
 }
