@@ -3,10 +3,9 @@ import { useParams } from 'react-router-dom';
 import { fetchArticle, fetchComments } from '../api';
 import styles from "../styles/mystyles.module.css";
 import CommentCard from "./CommentCard";
-import VotesCard from "./VotesCard"
+import VotesCard from "./VotesCard";
 import PostCommentCard from './PostCommentCard';
 import { UserContext } from '../src/UserContext';
-
 
 const SingleArticle = () => {
     const { article_id } = useParams();
@@ -14,10 +13,10 @@ const SingleArticle = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [comments, setComments] = useState([]);
     const [commentsLoading, setCommentsLoading] = useState(true);
-    const { user } = useContext(UserContext)
+    const { user } = useContext(UserContext);
 
     useEffect(() => {
-        console.log("Using Effect")
+        console.log("Using Effect");
         fetchArticle(article_id).then((articleFromApi) => {
             setArticle(articleFromApi);
             setIsLoading(false);
@@ -25,14 +24,18 @@ const SingleArticle = () => {
         fetchComments(article_id).then((commentsFromApi) => {
             setComments(commentsFromApi);
             setCommentsLoading(false);
-        }).catch((err)=>{
+        }).catch((err) => {
             setCommentsLoading(false);
-        })
+        });
     }, [article_id]);
-    
-    const addComment = (newComment)=>{
-        setComments([newComment, ...comments])
-    }
+
+    const addComment = (newComment) => {
+        setComments([newComment, ...comments]);
+    };
+
+    const deleteCommentFromList = (commentId) => {
+        setComments(comments.filter(comment => comment.comment_id !== commentId));
+    };
 
     if (isLoading) return <h2>The Raven is on the way...</h2>;
     if (commentsLoading) return <h2>Let's hear what the people think...</h2>;
@@ -51,11 +54,10 @@ const SingleArticle = () => {
             </div>
             <div className={styles.comments}>
                 <h3>What do the people think?</h3>
-                {user ? <PostCommentCard article_id={article_id} addComment={addComment}/> : <p>Please log in to post a comment</p> }
+                {user.username !== null ? <PostCommentCard article_id={article_id} addComment={addComment} /> : <p>Please log in to post a comment</p>}
                 <ul className={styles.allComments}>
                     {comments.map((comment) => (
-                        
-                        <CommentCard key={comment.comment_id} comment={comment} />
+                        <CommentCard key={comment.comment_id} comment={comment} onDelete={deleteCommentFromList} />
                     ))}
                 </ul>
             </div>
