@@ -12,6 +12,7 @@ const PostCommentCard = ({ article_id, addComment }) =>{
         username: user ? user.username : "",
      })
     const [submitMsg, setSubmitMsg] = useState("")
+    const [posting, setPosting] = useState(false)
 
     
     const handleChange=(event)=>{
@@ -19,16 +20,23 @@ const PostCommentCard = ({ article_id, addComment }) =>{
     }
 
     const handleSubmit = (event) =>{
+        console.log(event.target)
         event.preventDefault()
+        setPosting(true)
+        const optimisticComment = { ...comment, id: Date.now() }
+        addComment(optimisticComment)
+        setComment({ ...comment, body:""})
         postComment(article_id, comment)
             .then((postedComment)=>{
+                setPosting(false)
                 setSubmitMsg("Your comment has been posted")
-                addComment(postedComment)
-                setComment({ ...comment, body:""})
-            })
-            .catch((error)=>{
-                console.log(error)
-                setSubmitMsg("Failed to post the comment, please try again.")
+                addComment(postedComment, true)
+        })
+        .catch((error)=>{
+            console.log(error)
+            setPosting(false)
+            setSubmitMsg("Failed to post the comment, please try again.")
+            addComment(optimisticComment, false)      
             })
         
     }
@@ -36,14 +44,22 @@ const PostCommentCard = ({ article_id, addComment }) =>{
     if(!user){
         return <p>Please log in to post a comment.</p>
     }
+    
 
     return (
         <section className={styles.postCommentCard}>
             <form onSubmit={handleSubmit}>
                 <label>
-                    <input type="text" name="body" value={comment.body} required onChange={handleChange}/>
+                    <textarea
+                        name="body"
+                        value={comment.body}
+                        required
+                        onChange={handleChange}
+                        rows="5"
+                        cols="40"
+                    />
                 </label>
-                <button>Post</button>
+                {posting ? null : <button>Post</button> }
             </form>
             <p>{submitMsg}</p>
         </section>
