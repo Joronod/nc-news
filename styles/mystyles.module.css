@@ -1,0 +1,59 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.header {
+    border: 1px solid rgba(17, 0, 255, 0.411);
+    width: 100%;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+}
+
+.home {
+    border: 1px solid rgba(0, 217, 255, 0.411)
+}
+
+
+.allArticles {
+    border: 1px solid rgba(21, 255, 0, 0.411);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.articleCard {
+    border: 1px solid rgba(255, 102, 0, 0.411);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2;
+    list-style: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.articleOverview {
+    border: 1px solid rgba(229, 255, 0, 0.411);
+    border-radius: 8px;
+    padding: 16px;
+    margin: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 300px;
+    flex: 1 1 calc(33.333% - 40px);
+    box-sizing: border-box;
+}
+
+.articleOverview h3 {
+    margin: 0 0 10px;
+}
+
+.articleOverview p {
+    margin: 0 0 5px;
+}
+
