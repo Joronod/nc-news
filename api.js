@@ -54,9 +54,8 @@ export const decreaseVotes = (articleId) => {
 }
 
 export const postComment = (articleId, comment) => {
-    return ncNewsApi.post(`/articles.${articleId}/comments`, comment)
+    return ncNewsApi.post(`/articles/${articleId}/comments`, comment)
     .then((newComment)=>{
-        console.log(newComment)
-        return newComment.data.comment
+        return newComment.data.postedComment
     })
 }
