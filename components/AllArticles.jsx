@@ -16,7 +16,7 @@ const AllArticles = ()=>{
         });
     }, [])
 
-    if(isLoading) return <h2>Stop the Press!</h2>
+    if(isLoading) return <h2>The Raven is on the way</h2>
 
     if(!isLoading){
 

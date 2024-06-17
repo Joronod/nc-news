@@ -49,11 +49,26 @@
     box-sizing: border-box;
 }
 
-.articleOverview h3 {
+h3 {
     margin: 0 0 10px;
 }
 
-.articleOverview p {
+p {
     margin: 0 0 5px;
 }
 
+.singleArticle {
+    border: 1px solid rgba(98, 0, 255, 0.568);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+}
+
+.singleArticle img {
+    border: 2px solid rgba(255, 102, 0, 0.568);
+    max-width: 450px;
+    height: auto;
+    margin: 20px 0;
+}
