@@ -45,6 +45,7 @@ const SingleArticle = () => {
             </div>
             <div className={styles.comments}>
                 <h3>What do the people think?</h3>
+                <button><h4>post comment</h4></button>
                 <ul className={styles.allComments}>
                     {comments.map((comment) => (
                         <CommentCard key={comment.comment_id} comment={comment} />

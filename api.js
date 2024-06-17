@@ -26,15 +26,23 @@ export const fetchComments = (articleId) =>{
         .then((response)=>{
             return response.data.comments
         })
+        
+    }
 
-}
-
+export const fetchUsers = () =>{
+    return ncNewsApi
+        .get("/users")
+        .then((response) =>{
+        return response.data
+        })
+    }
+    
 export const increaseVotes = (articleId) => {
     return ncNewsApi
     .patch(`/articles/${articleId}`, {inc_votes: 1})
     .then((newVote)=>{
         return newVote.data.article.votes
-    })
+    }).catch(err)
 }
 
 export const decreaseVotes = (articleId) => {
@@ -42,5 +50,13 @@ export const decreaseVotes = (articleId) => {
     .patch(`/articles/${articleId}`, {inc_votes: -1})
     .then((newVote)=>{
         return newVote.data.article.votes
+    })
+}
+
+export const postComment = (articleId, comment) => {
+    return ncNewsApi.post(`/articles.${articleId}/comments`, comment)
+    .then((newComment)=>{
+        console.log(newComment)
+        return newComment.data.comment
     })
 }
