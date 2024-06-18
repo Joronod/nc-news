@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { fetchArticle, fetchComments } from '../api';
 import styles from "../styles/mystyles.module.css";
 import CommentCard from "./CommentCard";
+import VotesCard from "./VotesCard"
 
 const SingleArticle = () => {
     const { article_id } = useParams();
@@ -26,6 +27,7 @@ const SingleArticle = () => {
     }, [article_id]);
     
 
+
     if (isLoading) return <h2>The Raven is on the way...</h2>;
     if (commentsLoading) return <h2>Let's hear what the people think...</h2>;
 
@@ -37,6 +39,9 @@ const SingleArticle = () => {
                 <h3>by {article.author}</h3>
                 <p>posted at {new Date(article.created_at).toLocaleString()}</p>
                 <p>{article.body}</p>
+            </div>
+            <div className={styles.votes}>
+                <VotesCard article_id={article_id} initialVotes={article.votes} />
             </div>
             <div className={styles.comments}>
                 <h3>What do the people think?</h3>

@@ -111,3 +111,29 @@ p {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: #fff;
 }
+
+.votes {
+    border: 2px solid rgba(255, 0, 0, 0.623);
+}
+
+.voteButton {
+    padding: 10px;
+    margin: 5px;
+}
+
+.upvoteButton {
+    background-color: ivory;
+}
+.downvoteButton {
+    background-color: ivory;
+}
+
+.upvoteButtonActive {
+    background-color: green;
+    color: white;
+}
+
+.downvoteButtonActive {
+    background-color: red;
+    color: white;
+}

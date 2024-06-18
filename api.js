@@ -28,3 +28,19 @@ export const fetchComments = (articleId) =>{
         })
 
 }
+
+export const increaseVotes = (articleId) => {
+    return ncNewsApi
+    .patch(`/articles/${articleId}`, {inc_votes: 1})
+    .then((newVote)=>{
+        return newVote.data.article.votes
+    })
+}
+
+export const decreaseVotes = (articleId) => {
+    return ncNewsApi
+    .patch(`/articles/${articleId}`, {inc_votes: -1})
+    .then((newVote)=>{
+        return newVote.data.article.votes
+    })
+}
