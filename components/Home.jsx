@@ -13,6 +13,7 @@ const Home = ()=>{
                 </button>
 
             <h2>Featured Articles</h2>
+            <p>Here will be several randomly generated articles, eventually...</p>
         </div>
     )
 }
