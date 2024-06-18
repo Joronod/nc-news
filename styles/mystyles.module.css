@@ -196,3 +196,51 @@ p {
     border-radius: 50%;
     margin-right: 10px;
 }
+
+.topics {
+    border: 2px solid rgba(106, 139, 15, 0.623);
+}
+
+.topicsBanner {
+    border: 2px solid rgba(48, 15, 139, 0.623);
+}
+
+.topicButtons {
+    display: flex;
+    justify-content: flex-start;
+    justify-content: space-evenly;
+}
+
+.descriptionText {
+    display:  none;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #533eaf;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    margin-top: 10px;
+    transform: translatex(50%) translateY(35%);
+    
+}
+
+.topicContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.topic:hover + .descriptionText {
+    display: flex;
+}
+
+.filteredTopics {
+    border: 1px solid rgba(21, 255, 0, 0.411);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    list-style: none;
+}

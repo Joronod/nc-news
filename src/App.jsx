@@ -17,8 +17,10 @@ function App() {
                     <Routes>
                         <Route path="/users" element={<Users />} />
                         <Route path="/" element={<Home />} />
+                        <Route path="/topics" element={<Home />} />
                         <Route path="/articles" element={<AllArticles />} />
                         <Route path="/articles/:article_id" element={<SingleArticle />} />
+                        <Route path="/topics/:topic" element={<Home />} />
                     </Routes>
                 </div>
             </BrowserRouter>
