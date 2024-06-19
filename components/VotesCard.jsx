@@ -29,18 +29,18 @@ const VotesCard =({ article_id, initialVotes }) =>{
             }
         } catch {
            console.log(errorMsg) 
-           setErrorMsg("The raven got lost. Please send another.") 
+           setErrorMsg("Please refresh to check your vote has registered") 
         }
     }
 
     const handleDownvote = () => {
         try {
 
-            if (userVote === -1) {
-                setVotes(votes + 1);
-                setErrorMsg(null);
-                increaseVotes(article_id);
+        if (userVote === -1) {
+            setVotes(votes + 1);
+            setErrorMsg(null);
             setUserVote(0);
+            increaseVotes(article_id);
         } else if (userVote === 1) {
             setVotes(votes - 2);
             setErrorMsg(null);
@@ -55,7 +55,7 @@ const VotesCard =({ article_id, initialVotes }) =>{
             }
         } catch {
             console.log(errorMsg)
-            setErrorMsg("The raven got lost. Please send another.") 
+            setErrorMsg("Please refresh to check your vote has registered") 
         }
     }
 
