@@ -29,7 +29,18 @@ const SingleArticle = () => {
         });
     }, [article_id]);
 
-    const addComment = (newComment) => {
+    const addComment = (newComment, isFinal = false) => {
+        setComments((previousComments)=>{
+            if(isFinal){
+                return previousComments.map((comment)=>{
+                    comment.id === newComment.id ? newComment : comment
+                })
+            } else {
+                return [newComment, ...previousComments]
+            }
+        })
+
+
         setComments([newComment, ...comments]);
     };
 
