@@ -9,7 +9,6 @@ const AllArticles = ()=>{
 
 
     useEffect(()=>{
-        console.log("Using Effect!")
         fetchArticles().then((articlesFromApi)=>{
             setArticles(articlesFromApi)
             setIsLoading(false)
