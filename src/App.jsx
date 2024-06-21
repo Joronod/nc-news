@@ -7,6 +7,7 @@ import AllArticles from '../components/AllArticles';
 import SingleArticle from "../components/SingleArticle";
 import Users from "../components/Users";
 import { UserProvider } from "./UserContext";
+import NotFound from "../components/NotFound";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                         <Route path="/articles" element={<AllArticles />} />
                         <Route path="/articles/:article_id" element={<SingleArticle />} />
                         <Route path="/topics/:topic" element={<Home />} />
+                        <Route path="*" element={<NotFound />} />
                     </Routes>
                 </div>
             </BrowserRouter>
