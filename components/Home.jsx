@@ -3,12 +3,15 @@ import styles from "../styles/mystyles.module.css";
 import { Link, useParams } from "react-router-dom";
 import { fetchArticlesByTopic, fetchTopics } from "../api";
 import ArticleCard from "./ArticleCard";
+import Sorting from "./Sorting";
 
 const Home = () => {
     const [topics, setTopics] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [filteredArticles, setFilteredArticles] = useState([]);
     const { topic } = useParams();
+    const [sortBy, setSortBy] = useState("date")
+    const [order, setOrder] = useState("desc")
 
     useEffect(() => {
         fetchTopics().then((topicsFromApi) => {
@@ -20,12 +23,12 @@ const Home = () => {
     useEffect(() => {
         if (topic) {
             setIsLoading(true);
-            fetchArticlesByTopic(topic).then((articlesFromApi) => {
+            fetchArticlesByTopic(topic, sortBy, order).then((articlesFromApi) => {
                 setFilteredArticles(articlesFromApi);
                 setIsLoading(false);
             });
         }
-    }, [topic]);
+    }, [topic, sortBy, order]);
 
     if (isLoading) return <h2>The Raven is on the way</h2>;
 
@@ -57,6 +60,7 @@ const Home = () => {
                 ) : (
                     <section className={styles.filteredTopics}>
                         <h3>Displaying articles on {topic}</h3>
+                        <Sorting sortBy={sortBy} setSortBy={setSortBy} order={order} setOrder={setOrder} />
                         {filteredArticles.map((article) => {
                             return <ArticleCard key={article.article_id} article={article} />;
                         })}
