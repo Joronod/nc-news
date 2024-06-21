@@ -10,8 +10,9 @@ const Home = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [filteredArticles, setFilteredArticles] = useState([]);
     const { topic } = useParams();
-    const [sortBy, setSortBy] = useState("date")
-    const [order, setOrder] = useState("desc")
+    const [sortBy, setSortBy] = useState("date");
+    const [order, setOrder] = useState("desc");
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         fetchTopics().then((topicsFromApi) => {
@@ -23,10 +24,20 @@ const Home = () => {
     useEffect(() => {
         if (topic) {
             setIsLoading(true);
-            fetchArticlesByTopic(topic, sortBy, order).then((articlesFromApi) => {
-                setFilteredArticles(articlesFromApi);
-                setIsLoading(false);
-            });
+            fetchArticlesByTopic(topic, sortBy, order)
+                .then((articlesFromApi) => {
+                    setFilteredArticles(articlesFromApi);
+                    setIsLoading(false);
+                    if (articlesFromApi.length === 0) {
+                        setError(`No articles found for topic: ${topic}`);
+                    } else {
+                        setError(null);
+                    }
+                })
+                .catch((err) => {
+                    setIsLoading(false);
+                    setError("Failed to fetch articles. Please try again.");
+                });
         }
     }, [topic, sortBy, order]);
 
@@ -43,16 +54,14 @@ const Home = () => {
                 <nav className={styles.topicsBanner}>
                     <h2>Topics</h2>
                     <ul className={styles.topicButtons}>
-                        {topics.map((topic) => {
-                            return (
-                                <div className={styles.topicContainer} key={topic.slug}>
-                                    <button className={styles.topic}>
-                                        <Link to={`/topics/${topic.slug}`}>{topic.slug}</Link>
-                                    </button>
-                                    <p className={styles.descriptionText}>{topic.description}</p>
-                                </div>
-                            );
-                        })}
+                        {topics.map((topic) => (
+                            <div className={styles.topicContainer} key={topic.slug}>
+                                <button className={styles.topic}>
+                                    <Link to={`/topics/${topic.slug}`}>{topic.slug}</Link>
+                                </button>
+                                <p className={styles.descriptionText}>{topic.description}</p>
+                            </div>
+                        ))}
                     </ul>
                 </nav>
                 {!topic ? (
@@ -61,9 +70,11 @@ const Home = () => {
                     <section className={styles.filteredTopics}>
                         <h3>Displaying articles on {topic}</h3>
                         <Sorting sortBy={sortBy} setSortBy={setSortBy} order={order} setOrder={setOrder} />
-                        {filteredArticles.map((article) => {
-                            return <ArticleCard key={article.article_id} article={article} />;
-                        })}
+                        {error ? (
+                            <p>{error}</p>
+                        ) : (
+                            filteredArticles.map((article) => <ArticleCard key={article.article_id} article={article} />)
+                        )}
                     </section>
                 )}
             </section>

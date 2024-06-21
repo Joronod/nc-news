@@ -13,6 +13,7 @@ const PostCommentCard = ({ article_id, addComment }) =>{
      })
     const [submitMsg, setSubmitMsg] = useState("")
     const [posting, setPosting] = useState(false)
+    
 
     
     const handleChange=(event)=>{

@@ -14,6 +14,7 @@ const SingleArticle = () => {
     const [comments, setComments] = useState([]);
     const [commentsLoading, setCommentsLoading] = useState(true);
     const { user } = useContext(UserContext);
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         console.log("Using Effect");
@@ -25,6 +26,7 @@ const SingleArticle = () => {
             setComments(commentsFromApi);
             setCommentsLoading(false);
         }).catch((err) => {
+            setError("Please refresh the page")
             setCommentsLoading(false);
         });
     }, [article_id]);
@@ -49,6 +51,7 @@ const SingleArticle = () => {
     };
 
     if (isLoading) return <h2>The Raven is on the way...</h2>;
+    if(error) return <h2>{error}</h2>
     if (commentsLoading) return <h2>Let's hear what the people think...</h2>;
 
     return (
