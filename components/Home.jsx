@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { fetchArticlesByTopic, fetchTopics } from "../api";
 import ArticleCard from "./ArticleCard";
 import Sorting from "./Sorting";
+import FeaturedArticle from "./FeaturedArticle";
 
 const Home = () => {
     const [topics, setTopics] = useState([]);
@@ -17,6 +18,9 @@ const Home = () => {
     useEffect(() => {
         fetchTopics().then((topicsFromApi) => {
             setTopics(topicsFromApi);
+            setIsLoading(false);
+        }).catch(() => {
+            setError("Failed to load topics.");
             setIsLoading(false);
         });
     }, []);
@@ -34,7 +38,7 @@ const Home = () => {
                         setError(null);
                     }
                 })
-                .catch((err) => {
+                .catch(() => {
                     setIsLoading(false);
                     setError("Failed to fetch articles. Please try again.");
                 });
@@ -65,7 +69,12 @@ const Home = () => {
                     </ul>
                 </nav>
                 {!topic ? (
-                    <h3>Featured Articles</h3>
+                    <section className={styles.featuredArticlesContainer}>
+                        <h3>Featured Articles</h3>
+                        <FeaturedArticle />
+                        <FeaturedArticle />
+                        <FeaturedArticle />
+                    </section>
                 ) : (
                     <section className={styles.filteredTopics}>
                         <h3>Displaying articles on {topic}</h3>

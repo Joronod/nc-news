@@ -23,7 +23,6 @@ export const fetchArticles = (sortBy = "date", order = "desc") => {
                 order: order
         }})
         .then((response) => {
-            console.log(response.data.articles)
             return response.data.articles;
         })
         .catch((error)=>{
@@ -40,7 +39,6 @@ export const fetchArticlesByTopic = (topic, sortBy = "date", order = "desc") => 
             order: order,
         },
     }).then((response) => {
-        console.log(response)
         return response.data.articles;
     })
     .catch((error)=>{

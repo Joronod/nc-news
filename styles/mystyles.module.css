@@ -3,10 +3,11 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    
 }
 
 .header {
-    border: 1px solid rgba(17, 0, 255, 0.411);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     width: 100%;
     padding: 10px;
     background-color: #f8f8f8;
@@ -14,12 +15,15 @@
 }
 
 .home {
-    border: 1px solid rgba(0, 217, 255, 0.411)
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
 }
 
 
 .allArticles {
-    border: 1px solid rgba(21, 255, 0, 0.411);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -28,17 +32,16 @@
 }
 
 .articleCard {
-    border: 1px solid rgba(255, 102, 0, 0.411);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding: 2;
     list-style: none;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .articleOverview {
-    border: 1px solid rgba(229, 255, 0, 0.411);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     border-radius: 8px;
     padding: 16px;
     margin: 10px;
@@ -58,7 +61,7 @@ p {
 }
 
 .singleArticle {
-    border: 1px solid rgba(98, 0, 255, 0.568);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -76,11 +79,12 @@ p {
     width: 100%;
     box-sizing: border-box;
     padding: 20px;
+    background-color: #318cee3f;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .singleArticle img {
     object-fit: contain;
-    border: 2px solid rgba(255, 102, 0, 0.568);
     max-width: 450px;
     height: auto;
     margin: 20px 0;
@@ -88,22 +92,25 @@ p {
 
 
 .comments {
-    border: 2px solid rgba(122, 163, 46, 0.568);
     display: flex;
     flex-direction: column;
     gap: 10px;
     width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    background-color: #318cee31;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .allComments {
-    border: 2px solid rgba(97, 46, 163, 0.568);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
 .comment {
-    border: 2px solid rgba(128, 255, 0, 0.623);
+
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -114,7 +121,10 @@ p {
 }
 
 .votes {
-    border: 2px solid rgba(255, 0, 0, 0.623);
+    border: 2px solid rgba(55, 0, 255, 0.178);
+    background-color: #533eaf5b;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 5px;
 }
 
 .voteButton {
@@ -122,10 +132,19 @@ p {
     margin: 5px;
 }
 
+.upvoteButton:hover {
+    background-color: #318dee;
+}
+.downvoteButton:hover {
+    background-color: #cf2424;
+}
+
 .upvoteButton {
+    cursor: pointer;
     background-color: ivory;
 }
 .downvoteButton {
+    cursor: pointer;
     background-color: ivory;
 }
 
@@ -198,17 +217,26 @@ p {
 }
 
 .topics {
-    border: 2px solid rgba(106, 139, 15, 0.623);
+    padding: 16px;
+    margin: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .topicsBanner {
-    border: 2px solid rgba(48, 15, 139, 0.623);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .topicButtons {
     display: flex;
-    justify-content: flex-start;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
 }
 
 .descriptionText {
@@ -220,15 +248,12 @@ p {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 200px;
     margin-top: 10px;
-    transform: translatex(50%) translateY(35%);
+    transform: translatex(5%) translateY(20%);
     
 }
 
 .topicContainer {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 10px;
 }
 
 .topic:hover + .descriptionText {
@@ -259,4 +284,27 @@ p {
 .sorting button {
     padding: 5px;
     font-size: 1rem;
+}
+.topic {
+    padding: 10px 20px;
+    border: none;
+    background-color: #9bbfe6;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.topic:hover {
+    background-color: #318dee;
+}
+.featuredArticlesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.featuredArticleCard {
+    list-style: none;
 }
