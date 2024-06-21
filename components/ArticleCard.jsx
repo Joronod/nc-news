@@ -8,8 +8,8 @@ const ArticleCard = ({ article })=>{
         <section className={styles.articleOverview}>
             <Link to={`/articles/${article_id}`}>
                 <li key={article_id}>
-                    <h3>Title: {article.title}</h3>
-                    <p>Author: {article.author} </p>
+                    <h3> {article.title}</h3>
+                    <p>by {article.author} </p>
                     <p>Posted at {new Date(article.created_at).toLocaleString()}</p>
                 </li>
             </Link>

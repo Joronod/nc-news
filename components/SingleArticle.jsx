@@ -50,7 +50,9 @@ const SingleArticle = () => {
         setComments(comments.filter(comment => comment.comment_id !== commentId));
     };
 
-    if (isLoading) return <h2>The Raven is on the way...</h2>;
+    if (isLoading) {
+        return <div className={styles.loader}></div>;
+    }
     if(error) return <h2>{error}</h2>
     if (commentsLoading) return <h2>Let's hear what the people think...</h2>;
 

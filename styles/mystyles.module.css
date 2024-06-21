@@ -159,6 +159,7 @@ p {
 }
 
 .userOverview {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     display: flex;
     align-items: center;
     border: 1px solid #ccc;
@@ -181,11 +182,13 @@ p {
 }
 
 .usersOverview {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     display: flex;
     flex-direction: column;
     padding: 20px;
     width: 100%;
     box-sizing: border-box;
+    
 }
 .allUsers {
     display: flex;
@@ -205,8 +208,15 @@ p {
 }
 
 .userProfile {
+    
     display: flex;
     align-items: center;
+}
+
+.userOverview:hover {
+    transition: background-color 0.3s;
+    background-color: #62a6ee;
+    transform: scale(110%);
 }
 
 .userAvatar {
@@ -243,7 +253,6 @@ p {
     display:  none;
     position: absolute;
     background-color: rgb(255, 255, 255);
-    border: 1px solid #533eaf;
     padding: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 200px;
@@ -261,7 +270,6 @@ p {
 }
 
 .filteredTopics {
-    border: 1px solid rgba(21, 255, 0, 0.411);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -296,6 +304,7 @@ p {
 }
 .topic:hover {
     background-color: #318dee;
+    transform: scale(110%);
 }
 .featuredArticlesContainer {
     display: flex;
@@ -307,4 +316,56 @@ p {
 
 .featuredArticleCard {
     list-style: none;
+}
+
+.articleOverview:hover {
+    transition: background-color 0.3s;
+    background-color: #62a6ee;
+    transform: scale(110%);
+}
+
+.viewAllArticlesButton{
+    padding: 10px 20px;
+    border: none;
+    background-color: #9bbfe6;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.viewAllArticlesButton:hover {
+    transition: background-color 0.3s;
+    background-color: #62a6ee;  
+    transform: scale(110%);
+}
+
+.loginButton{
+    padding: 10px 20px;
+    border: none;
+    background-color: #9bbfe6;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.loginButton:hover {
+    transition: background-color 0.3s;
+    background-color: #62a6ee;  
+    transform: scale(110%);
+}
+
+
+.loader {
+    margin:auto;
+    border: 16px solid #f3f3f3; 
+    border-top: 16px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

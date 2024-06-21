@@ -45,13 +45,15 @@ const Home = () => {
         }
     }, [topic, sortBy, order]);
 
-    if (isLoading) return <h2>The Raven is on the way</h2>;
+    if (isLoading) {
+        return <div className={styles.loader}></div>;
+    }
 
     return (
         <div className={styles.home}>
             <h1>Home</h1>
             <h2>Want to catch up on all the stories?</h2>
-            <button>
+            <button className={styles.viewAllArticlesButton}>
                 <Link to="/articles">View All Articles</Link>
             </button>
             <section className={styles.topics}>

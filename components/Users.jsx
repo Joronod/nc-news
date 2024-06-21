@@ -21,7 +21,9 @@ const Users = ()=>{
         })
     },[])
 
-    if(isLoading) return <h2>The Raven is on the way</h2>
+    if (isLoading) {
+        return <div className={styles.loader}></div>;
+    }
     if(error) return <h2>{error}</h2>
 
     if(!isLoading){
