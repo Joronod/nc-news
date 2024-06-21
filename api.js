@@ -10,6 +10,9 @@ export const fetchTopics = () => {
         .then((response)=>{
             return response.data
         })
+        .catch((error)=>{
+            throw new Error("Unable to fetch topics")
+        })
 }
 
 export const fetchArticles = (sortBy = "date", order = "desc") => {
@@ -22,7 +25,11 @@ export const fetchArticles = (sortBy = "date", order = "desc") => {
         .then((response) => {
             console.log(response.data.articles)
             return response.data.articles;
-        });
+        })
+        .catch((error)=>{
+            throw new Error("Unable to fetch articles")
+        })
+        
 };
 
 export const fetchArticlesByTopic = (topic, sortBy = "date", order = "desc") => {
@@ -35,16 +42,21 @@ export const fetchArticlesByTopic = (topic, sortBy = "date", order = "desc") => 
     }).then((response) => {
         console.log(response)
         return response.data.articles;
-    });
+    })
+    .catch((error)=>{
+        throw new Error("Unable to fetch articles")
+    })
 };
-
 
 export const fetchArticle = (articleId) => {
     return ncNewsApi
         .get(`/articles/${articleId}`)
         .then((response) => {
             return response.data.article;
-        });
+        })
+        .catch((error)=>{
+            throw new Error("Unable to fetch article")
+        })
 };
 
 export const fetchComments = (articleId) =>{
@@ -53,7 +65,9 @@ export const fetchComments = (articleId) =>{
         .then((response)=>{
             return response.data.comments
         })
-        
+        .catch((error)=>{
+            throw new Error("Unable to fetch comments")
+        })
     }
 
 export const fetchUsers = () =>{
@@ -62,6 +76,9 @@ export const fetchUsers = () =>{
         .then((response) =>{
         return response.data
         })
+        .catch((error)=>{
+            throw new Error("Unable to fetch users")
+        })
     }
     
 export const increaseVotes = (articleId) => {
@@ -69,7 +86,9 @@ export const increaseVotes = (articleId) => {
     .patch(`/articles/${articleId}`, {inc_votes: 1})
     .then((newVote)=>{
         return newVote.data.article.votes
-    }).catch(err)
+    }).catch((error)=>{
+        throw new Error("Please try again later")
+    })
 }
 
 export const decreaseVotes = (articleId) => {
@@ -78,12 +97,18 @@ export const decreaseVotes = (articleId) => {
     .then((newVote)=>{
         return newVote.data.article.votes
     })
+    .catch((error)=>{
+        throw new Error("Please try again later")
+    })
 }
 
 export const postComment = (articleId, comment) => {
     return ncNewsApi.post(`/articles/${articleId}/comments`, comment)
     .then((newComment)=>{
         return newComment.data.postedComment
+    })
+    .catch((error)=>{
+        throw new Error("Please try again later")
     })
 }
 
@@ -92,4 +117,8 @@ export const deleteComment = (comment_id) =>{
     .then((deletedComment)=>{
         console.log(deleteComment)
     })
+    .catch((error)=>{
+        throw new Error("Please try again later")
+    })
 }
+
