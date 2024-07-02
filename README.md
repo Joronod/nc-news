@@ -27,6 +27,8 @@ The link to the API is as follows:
 
 ` https://be-nc-news-jn.onrender.com/api `
 
+Please see https://github.com/Joronod/be-nc-news-jn for info on current bug.
+
 ## Getting Started
 To run the app locally:
 
